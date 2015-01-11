@@ -1,0 +1,29 @@
+<?php $__env->startSection('content'); ?>
+			
+			<table class="table table-bordered table-striped">
+			<thead>
+                <tr>
+                    <th>
+                        <h3>Admin List</h3>
+                    </th>
+                </tr>
+			</thead>
+
+			<tbody>
+			<?php foreach($data as $info): ?>
+                <tr>
+                    <td>
+                     <?php echo link_to_route('author',$info->first_name,array('id'=>$info->id)); ?>
+
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+			</table>
+			<p><?php echo link_to_route('new_author','Add New Admin',array('class'=>'h2')); ?></p>
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

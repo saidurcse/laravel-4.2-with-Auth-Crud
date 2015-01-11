@@ -1,0 +1,72 @@
+<?php $__env->startSection('content'); ?>
+
+            <?php if($errors->has()): ?>
+            <div class="alert alert-danger awesome">
+                <?php foreach($errors->all() as $error): ?>
+                    <?php echo $error; ?><br>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+			<?php echo Form::open(array('url' => 'authors/saveAuthor', 'method' => 'post', 'class'=>'form-signin')); ?>
+				<h2>Join SmartTechPark Today.</h2>
+
+				<br>
+
+				<div class="form-group <?php if($errors->has('first_name')): ?> has-error <?php endif; ?>">
+                    <p>
+                        <?php echo Form::label('first_name', 'First Name', array('class' => 'awesome')); ?>
+
+                        <?php echo Form::text('first_name', Input::old('first_name'),array('class' => 'form-control','placeholder' => 'First-name')); ?>
+
+                    </p>
+                    <?php if($errors->has('first_name')): ?> <p class="help-block"><?php echo $errors->first('first_name'); ?></p> <?php endif; ?>
+				</div>
+
+				<div class="form-group <?php if($errors->has('last_name')): ?> has-error <?php endif; ?>">
+                    <p>
+                        <?php echo Form::label('last_name', 'Last Name', array('class' => 'awesome')); ?>
+
+                        <?php echo Form::text('last_name', Input::old('last_name'),array('class' => 'form-control','placeholder' => 'Last-name')); ?>
+
+                    </p>
+                    <?php if($errors->has('last_name')): ?> <p class="help-block"><?php echo $errors->first('last_name'); ?></p> <?php endif; ?>
+                </div>
+
+                <div class="form-group <?php if($errors->has('email')): ?> has-error <?php endif; ?>">
+				<p>
+					<?php echo Form::label('email', 'E-Mail', array('class' => 'awesome')); ?>
+
+					<?php echo Form::text('email',  Input::old('email'),array('class' => 'form-control','placeholder' => 'Email')); ?>
+
+				</p>
+                <?php if($errors->has('email')): ?> <p class="help-block"><?php echo $errors->first('email'); ?></p> <?php endif; ?>
+                </div>
+
+                <div class="form-group <?php if($errors->has('password')): ?> has-error <?php endif; ?>">
+                <p>
+                    <?php echo Form::label('password', 'Password', array('class' => 'awesome')); ?>
+
+                    <?php echo Form::password('password',array('class' => 'form-control', 'placeholder' => 'Password')); ?>
+
+                </p>
+                <?php if($errors->has('password')): ?> <p class="help-block"><?php echo $errors->first('password'); ?></p> <?php endif; ?>
+                </div>
+<?php /*                <p>
+                    <?php echo Form::label('password_confirm', 'Confirm Password', array('class' => 'awesome')); ?>
+
+                    <?php echo Form::password('password',array('class' => 'form-control', 'placeholder' => 'Confirm Password')); ?>
+
+                </p>*/ ?>
+
+				<p>
+					<?php echo Form::submit('Register',array('class' => 'btn btn-large btn-primary btn-block')); ?>
+
+				</p>
+				
+  
+			<?php echo Form::close(); ?>
+			
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
